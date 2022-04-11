@@ -3,14 +3,10 @@
         <div class="card">
             <div class="card-header">Užduočių sąrašas</div>
             <div class="card-body">
-                <ul class="list-group">
-                    <li [ngClass]="{'bg-primary': task.importance=='Nesvarbu',
-                                     'bg-warning': task.importance=='Skubu',
-                                    'bg-danger': task.importance=='Dega'}" class="list-group-item" *ngFor="let task of tasks; let i=index">
-                        {{i+1}}. {{task.taskName}}. Svarba: {{task.importance}} <button class="btn btn-danger float-end" (click)="removeProduct(i)" onkeypress="enter">X</button>
-                    </li>
-                </ul>
+            <div class="row">
+                <app-task  *ngFor="let task of tasks; let i=index" class="col-md-4" [task]="task" [index]="i" (afterRemoveTask)="removeTask($event)"></app-task>
             </div>
+        </div>
         </div>
     </div>
 

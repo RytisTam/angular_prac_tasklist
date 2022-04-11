@@ -1,0 +1,9 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 [ngClass]="{'text-primary': task.importance=='Nesvarbu', 'text-warning': task.importance=='Skubu','text-danger': task.importance=='Dega'}">{{index +1}}. {{task.taskName}}</h5>
+        <span>Svarba: {{task.importance}}</span>
+        <hr>
+        <button class="btn btn-danger" (click)="deleteTask()">Ištrinti</button>
+    </div>
+</div>
+

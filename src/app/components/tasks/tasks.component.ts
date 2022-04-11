@@ -38,7 +38,7 @@ export class TasksComponent implements OnInit {
     }
   }
 
-  public removeProduct(i:number){
+  public removeTask(i:number){
     this.tasks.splice(i,1);
     this.save();
   }
