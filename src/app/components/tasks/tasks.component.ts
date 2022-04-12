@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/models/TaskModel';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -9,42 +10,25 @@ import { Task } from 'src/app/models/TaskModel';
 export class TasksComponent implements OnInit {
 
   public tasks:Task[]=[];
-  public selectedImportance:string='Nesvarbu';
-  public inputTaskName:string='';
 
-  constructor() { 
-    let LocalStorageData = localStorage.getItem('tasks');
-    if (LocalStorageData != null){
-      this.tasks = JSON.parse(LocalStorageData);
-    }
-    console.log(this.tasks);
+
+  constructor(private taskService:TasksService) { 
+    taskService.loadTasks();
+    this.tasks=taskService.tasks;
   }
 
   ngOnInit(): void {
   }
 
-
-
-  public addNewTask(){
-    if (this.inputTaskName != null && this.selectedImportance != null){
-      this.tasks.push({
-        taskName:this.inputTaskName,
-        importance:this.selectedImportance,
-      })
-      this.inputTaskName = '';
-      this.selectedImportance = 'Nesvarbu';
-      this.save();
-
+  public addNewTask(name:HTMLInputElement, importance:HTMLSelectElement){
+    if (name.value !=''){
+      this.taskService.addTask(name.value, importance.value);
+      name.value = '';
+      importance.value = '';
     }
   }
 
-  public removeTask(i:number){
-    this.tasks.splice(i,1);
-    this.save();
-  }
 
-  private save(){
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
+  
 
 }

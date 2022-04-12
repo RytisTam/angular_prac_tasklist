@@ -4,7 +4,7 @@
             <div class="card-header">Užduočių sąrašas</div>
             <div class="card-body">
             <div class="row">
-                <app-task  *ngFor="let task of tasks; let i=index" class="col-md-4" [task]="task" [index]="i" (afterRemoveTask)="removeTask($event)"></app-task>
+                <app-task  *ngFor="let task of tasks; let i=index" class="col-md-4" [task]="task" [index]="i"></app-task>
             </div>
         </div>
         </div>
@@ -16,17 +16,17 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label for="" class="form-label">Aprašymas</label>
-                    <input type="text" class="form-control" [(ngModel)]="inputTaskName">
+                    <input type="text" class="form-control" #inputTaskName>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Svarba</label>
-                    <select class="form-select" [(ngModel)]="selectedImportance">
+                    <select class="form-select" #selectedImportance>
                         <option value="Nesvarbu">Nesvarbu</option>
                         <option value="Skubu">Skubu</option>
                         <option value="Dega">Dega</option>
                     </select>
                 </div>
-            <button class="btn btn-success" (click)="addNewTask()" [disabled]="inputTaskName==''">Pridėti</button>
+            <button class="btn btn-success" (click)="addNewTask(inputTaskName, selectedImportance)">Pridėti</button>
         </div>
     </div>
 </div>
