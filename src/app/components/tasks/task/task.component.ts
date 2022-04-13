@@ -12,8 +12,6 @@ export class TaskComponent implements OnInit {
   @Input() public task:Task={taskName:"", importance:""};
   @Input() public index:number=0;
 
-  @Output() public afterRemoveTask=new EventEmitter<number>();
-
 
   constructor(private taskService:TasksService) { }
 

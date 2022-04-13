@@ -8,10 +8,12 @@ import { TaskComponent } from './components/tasks/task/task.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { TaskNewComponent } from './components/tasks/task-new/task-new.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TaskEditComponent } from './components/task-edit/task-edit/task-edit.component';
 
 const tasksRoutes:Routes=[
   {path:'', component:TasksComponent},
-  {path:'naujas', component:TaskNewComponent}
+  {path:'naujas', component:TaskNewComponent},
+  {path:'koreguoti/:index', component:TaskEditComponent}
 ]
 
 @NgModule({
@@ -20,7 +22,8 @@ const tasksRoutes:Routes=[
     TasksComponent,
     TaskComponent,
     NavigationComponent,
-    TaskNewComponent
+    TaskNewComponent,
+    TaskEditComponent
   ],
   imports: [
     BrowserModule,

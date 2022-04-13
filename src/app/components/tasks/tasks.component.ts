@@ -13,7 +13,6 @@ export class TasksComponent implements OnInit {
 
 
   constructor(private taskService:TasksService) { 
-    taskService.loadTasks();
     this.tasks=taskService.tasks;
   }
 
